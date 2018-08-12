@@ -25,3 +25,14 @@ Examples:
 | id | name   |
 | 9  | hotel1 |
 
+Scenario: User wants to get all added hotels
+	Given User provided valid Id '10'  and 'Hyatt'for hotel 
+	And Use has added required details for hotel
+	And User calls AddHotel api
+	And User provided valid Id '11'  and 'Gopal'for hotel 
+	And Use has added required details for hotel
+	And User calls AddHotel api 
+	When User calls get all hotels
+	Then All added Hotels should be returned in the response
+	                      
+

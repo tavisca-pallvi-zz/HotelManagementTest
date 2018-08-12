@@ -30,6 +30,36 @@ namespace HotelManagementSystem.Tests
             return JsonConvert.DeserializeObject<Hotel>(content);
 
         }
-        
+        public static List<Hotel> VerifyHotel(List<Hotel>hotel)
+        {
+           List<Hotel>hotelsVerify=new List<Hotel>();
+
+
+            for (int i = 0; i < hotel.Count; i++)
+            {
+                hotelsVerify.Add(hotel[i]);
+
+            }
+            return hotelsVerify;
+        }
+            
+
+
+
+
+
+        /*
+        public static Hotel GetHotelById(int id)
+        {
+
+            var request = new RestRequest(string.Format("Hotel/{0}", id), Method.GET);
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+            return JsonConvert.DeserializeObject<Hotel>(content);
+
+        }
+        */
+
     }
 }

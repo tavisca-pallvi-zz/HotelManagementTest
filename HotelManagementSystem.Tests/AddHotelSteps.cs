@@ -12,6 +12,7 @@ namespace HotelManagementSystem.Tests
         private Hotel hotel = new Hotel();
         private Hotel addHotelResponse;
         private List<Hotel> hotels = new List<Hotel>();
+        private List<Hotel> hotelsVerify = new List<Hotel>();
 
 
         [Given(@"User provided valid Id '(.*)'  and '(.*)'for hotel")]
@@ -26,12 +27,22 @@ namespace HotelManagementSystem.Tests
         {
             SetHotelBasicDetails();
         }
+        [When(@"User calls get all hotels")]
+        public void WhenUserCallsGetAllHotels()
+        {
 
+            hotelsVerify = HotelsApiCaller.VerifyHotel(hotels);
+        }
+
+
+        [Given(@"User calls AddHotel api")]
         [When(@"User calls AddHotel api")]
-        public void WhenUserCallsAddHotelApi()
+        public void GivenUserCallsAddHotelApi()
         {
             hotels = HotelsApiCaller.AddHotel(hotel);
         }
+       
+
 
         [Then(@"Hotel with name '(.*)' should be present in the response")]
         public void ThenHotelWithNameShouldBePresentInTheResponse(string name)
@@ -61,6 +72,18 @@ namespace HotelManagementSystem.Tests
         {
            // hotel = hotels.Find(htl => htl.Id == id);
             hotels = HotelsApiCaller.AddHotel(hotel);
+        }
+
+
+        [Then(@"All added Hotels should be returned in the response")]
+        public void ThenAllAddedHotelsShouldBeReturnedInTheResponse()
+        {
+      
+            for (int i = 0; i < hotels.Count; i++)
+            {
+                hotelsVerify[i].Id.Should().Be(hotels[i].Id);
+            } 
+
         }
 
 

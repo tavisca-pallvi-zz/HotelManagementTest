@@ -116,27 +116,28 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User wants to get all list of all hotels added")]
-        [NUnit.Framework.TestCaseAttribute("1", "hotel1", null)]
-        [NUnit.Framework.TestCaseAttribute("2", "hotel2", null)]
-        [NUnit.Framework.TestCaseAttribute("3", "hotel3", null)]
-        public virtual void UserWantsToGetAllListOfAllHotelsAdded(string id, string name, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("User wants to get all added hotels")]
+        public virtual void UserWantsToGetAllAddedHotels()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User wants to get all list of all hotels added", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User wants to get all added hotels", ((string[])(null)));
 #line 28
 this.ScenarioSetup(scenarioInfo);
 #line 29
- testRunner.Given("User provided valid Id 1 and \"Hyatt\" for hotel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User provided valid Id \'10\'  and \'Hyatt\'for hotel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 30
  testRunner.And("Use has added required details for hotel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 31
- testRunner.Given(string.Format("User provided valid Id \'{0}\'  and \'{1}\'for hotel", id, name), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.And("User calls AddHotel api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 32
- testRunner.And("Use has added required details for hotel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("User provided valid Id \'11\'  and \'Gopal\'for hotel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 33
- testRunner.When(string.Format("User calls GetHotelById \'{0}\' api", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("Use has added required details for hotel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 34
- testRunner.Then(string.Format("Hotel with id \'{0}\' should be returned in the response", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("User calls AddHotel api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 35
+ testRunner.When("User calls get all hotels", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 36
+ testRunner.Then("All added Hotels should be returned in the response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
